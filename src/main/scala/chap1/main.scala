@@ -16,3 +16,6 @@ def main(): Unit =
   println(increment(100))
   println(getFirstCharacter("Hello"))
   println(wordScore("Hello"))
+
+// scala標準のprintlnは副作用を伴うが、IO型ではない
+// 関数型のライブラリ（ex. cats effect）でIO.printlnというIO型を返す関数を提供している
