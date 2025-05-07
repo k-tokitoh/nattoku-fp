@@ -1,8 +1,17 @@
-## sbt project compiled with Scala 3
+```
+$ sbt "runMain chap1.main"
+```
 
-### Usage
+ビルドツールとしては以下の ⭕️ を利用している。
 
-This is a normal sbt project. You can compile code with `sbt compile`, run it with `sbt run`, and `sbt console` will start a Scala 3 REPL.
-
-For more information on the sbt-dotty plugin, see the
-[scala3-example-project](https://github.com/scala/scala3-example-project/blob/main/README.md).
+- ⭕️ sbt
+  - scala のビルドツールとしてはデファクト
+- ⭕️ bloop
+  - vscode で LSP(language server protocol) に準拠した LS(language server) である metals から、BSP(build server protocol) を通じて bloop というビルドツールを実行している
+  - 高速にインクリメンタルビルドする点が特徴
+  - 設定としては sbt の設定ファイルである build.sbt を参照する
+- ❌️ scala-cli
+  - `scala run`コマンドで利用されるビルドツール
+  - `scala-build/`を生成する
+  - 単一ファイル実行小規模な開発に特化したツールであり、今回の手習いというユースケースには適合する
+  - しかしたくさん混在するとややこしいので利用しないこととした
