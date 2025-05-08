@@ -9,6 +9,7 @@ def sortedWords(words: List[String]): List[String] = {
 }
 
 // カリー化された関数を定義しやすい、こんな書き方ができる！
+// https://docs.scala-lang.org/ja/tour/multiple-parameter-lists.html
 def wordsLargerThan(length: Int)(words: List[String]): List[String] = {
   // 実装の内部では、どの段階で渡される引数なのかを意識しなくていい
   words.filter(word => word.length() > length)
