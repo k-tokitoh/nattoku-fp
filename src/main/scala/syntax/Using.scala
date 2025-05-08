@@ -56,6 +56,21 @@ def sum4[A: Additive as additive](list: List[A]): A = {
   list.foldLeft(additive.zero)((acc, el) => additive.plus(acc, el))
 }
 
+// ================================================================
+
+class Weather(val name: String)
+
+def parent() =
+  given Weather = new Weather("sunny")
+  child()
+
+def child()(using Weather) =
+// def child() =  // これではエラー。関数の呼び出しで、利用するcontextは毎回usingで明示的に引き回される必要がある
+  grandChild()
+
+def grandChild()(using Weather) =
+  println(s"It's ${summon[Weather].name} today.")
+
 object Using {
   def main(args: Array[String]): Unit = {
 
@@ -70,5 +85,6 @@ object Using {
     println(sum3(List(1, 2, 3))) // 30_006
     println(sum4(List(1, 2, 3))) // 30_006
 
+    parent() // It's sunny today.
   }
 }
